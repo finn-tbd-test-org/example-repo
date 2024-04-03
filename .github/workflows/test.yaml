@@ -14,5 +14,5 @@ on:
 
 jobs:
   security-license-scan:
-    uses: finn-tbd-test-org/.github/.github/workflows/test.yml@main
+    uses: finn-tbd-test-org/.github/.github/workflows/checkout-test.yml@main
     secrets: inherit
