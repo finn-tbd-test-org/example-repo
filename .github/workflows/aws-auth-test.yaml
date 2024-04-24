@@ -14,4 +14,7 @@ jobs:
         with:
           aws-region: us-west-2
           role-to-assume: arn:aws:iam::471112971538:role/example-repo-fossa-key
-      - run: aws sts get-caller-identity
+      - run: |
+          set -ex
+          aws sts get-caller-identity
+          aws secretsmanager get-secret-value --secret-id example-repo-fossa-key
