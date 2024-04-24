@@ -1,0 +1,13 @@
+name: AWS Test
+
+on: [push]
+
+jobs:
+  aws-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-west-2
+          role-to-assume: arn:aws:iam::471112971538:role/example-repo-fossa-key
+      - run: aws sts get-caller-identity
