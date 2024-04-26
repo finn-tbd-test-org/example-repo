@@ -17,4 +17,5 @@ jobs:
       - run: |
           set -ex
           aws sts get-caller-identity
-          aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-west-2:471112971538:secret:example-repo-fossa-key
+          FOSSA_API_KEY=$(aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-west-2:471112971538:secret:example-repo-fossa-key --query FOSSA_API_KEY --output text)
+          echo "FOSSA_API_KEY=${FOSSA_API_KEY}"
