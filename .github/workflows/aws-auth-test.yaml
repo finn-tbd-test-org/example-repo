@@ -14,8 +14,12 @@ jobs:
         with:
           aws-region: us-west-2
           role-to-assume: arn:aws:iam::471112971538:role/example-repo-fossa-key
+      - name: Step name
+        uses: aws-actions/aws-secretsmanager-get-secrets@v2
+        with:
+          secret-ids: |
+            FOSSA_API_KEY, example-repo-fossa-key
       - run: |
           set -ex
+          echo $FOSSA_API_KEY
           aws sts get-caller-identity
-          FOSSA_API_KEY=$(aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-west-2:471112971538:secret:example-repo-fossa-key --query FOSSA_API_KEY --output text)
-          echo "FOSSA_API_KEY=${FOSSA_API_KEY}"
