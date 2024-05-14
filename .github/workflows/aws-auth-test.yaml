@@ -13,12 +13,12 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-west-2
-          role-to-assume: arn:aws:iam::471112971538:role/example-repo-fossa-key
+          role-to-assume: arn:aws:iam::471112971538:role/repo-finn-tbd-test-org-example-repo-secret-access-fossa
       - name: Step name
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            FOSSA_API_KEY, example-repo-fossa-key
+            FOSSA_API_KEY, repo-finn-tbd-test-org-example-repo-fossa
       - run: |
           set -ex
           echo $FOSSA_API_KEY
