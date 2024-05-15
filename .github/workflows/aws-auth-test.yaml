@@ -13,7 +13,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-west-2
-          role-to-assume: arn:aws:iam::471112971538:role/repo-finn-tbd-test-org-example-repo-secret-access-fossa
+          role-to-assume: arn:aws:iam::471112971538:role/finn-tbd-test-org-example-repo-fossa-branch
       - name: Step name
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
