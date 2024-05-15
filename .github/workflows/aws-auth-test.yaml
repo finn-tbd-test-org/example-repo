@@ -18,7 +18,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            FOSSA_API_KEY, repo-finn-tbd-test-org-example-repo-fossa
+            FOSSA_API_KEY, finn-tbd-test-org-example-repo-fossa
       - run: |
           set -ex
           echo $FOSSA_API_KEY
