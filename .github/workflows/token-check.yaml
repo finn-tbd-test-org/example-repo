@@ -1,0 +1,17 @@
+name: token check
+
+on:
+  push:
+  pull_request:
+  pull_request_target:
+
+jobs:
+  token-check:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: print oidc token payload
+        run: |
+          curl -sLS -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=finn-learing" | jq .value | tr -d '"' | cut -d. -f2 | base64 -d | jq
